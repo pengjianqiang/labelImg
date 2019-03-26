@@ -144,7 +144,22 @@ class MainWindow(QMainWindow, WindowMixin):
         labelListContainer.setLayout(listLayout)
         self.labelList.itemActivated.connect(self.labelSelectionChanged)
         self.labelList.itemSelectionChanged.connect(self.labelSelectionChanged)
+
         self.labelList.itemDoubleClicked.connect(self.editLabel)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         # Connect to itemChanged to detect checkbox changes.
         self.labelList.itemChanged.connect(self.labelItemChanged)
         listLayout.addWidget(self.labelList)
@@ -297,7 +312,109 @@ class MainWindow(QMainWindow, WindowMixin):
         edit = action(getStr('editLabel'), self.editLabel,
                       'Ctrl+E', 'edit', getStr('editLabelDetail'),
                       enabled=False)
+
+
+
+
+
+
+
+
+
+
+        edit1 = action(getStr('editLabel'), self.editLabel1,
+                      '1', 'edit', getStr('editLabelDetail'),
+                      enabled=False)
+
+
+        edit2 = action(getStr('editLabel'), self.editLabel2,
+                      '2', 'edit', getStr('editLabelDetail'),
+                      enabled=False)
+
+
+        edit3 = action(getStr('editLabel'), self.editLabel3,
+                      '3', 'edit', getStr('editLabelDetail'),
+                      enabled=False)
+
+        edit4 = action(getStr('editLabel'), self.editLabel4,
+                       '4', 'edit', getStr('editLabelDetail'),
+                       enabled=False)
+
+        edit5 = action(getStr('editLabel'), self.editLabel5,
+                       '5', 'edit', getStr('editLabelDetail'),
+                       enabled=False)
+
+        edit6 = action(getStr('editLabel'), self.editLabel6,
+                       '6', 'edit', getStr('editLabelDetail'),
+                       enabled=False)
+
+        edit7 = action(getStr('editLabel'), self.editLabel7,
+                       '7', 'edit', getStr('editLabelDetail'),
+                       enabled=False)
+
+        edit8 = action(getStr('editLabel'), self.editLabel8,
+                       '8', 'edit', getStr('editLabelDetail'),
+                       enabled=False)
+
+        edit9 = action(getStr('editLabel'), self.editLabel9,
+                       '9', 'edit', getStr('editLabelDetail'),
+                       enabled=False)
+
+
+
+
+
+
+
+
+
+
         self.editButton.setDefaultAction(edit)
+
+        self.editButton.setDefaultAction(edit1)
+
+        self.editButton.setDefaultAction(edit2)
+
+        self.editButton.setDefaultAction(edit3)
+
+        self.editButton.setDefaultAction(edit4)
+
+        self.editButton.setDefaultAction(edit5)
+
+        self.editButton.setDefaultAction(edit6)
+
+        self.editButton.setDefaultAction(edit7)
+
+        self.editButton.setDefaultAction(edit8)
+
+        self.editButton.setDefaultAction(edit9)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         shapeLineColor = action(getStr('shapeLineColor'), self.chshapeLineColor,
                                 icon='color_line', tip=getStr('shapeLineColorDetail'),
@@ -312,7 +429,51 @@ class MainWindow(QMainWindow, WindowMixin):
 
         # Lavel list context menu.
         labelMenu = QMenu()
+
+
+
         addActions(labelMenu, (edit, delete))
+
+        addActions(labelMenu, (edit1, delete))
+
+        addActions(labelMenu, (edit2, delete))
+
+
+        addActions(labelMenu, (edit3, delete))
+
+        addActions(labelMenu, (edit4, delete))
+
+        addActions(labelMenu, (edit5, delete))
+
+        addActions(labelMenu, (edit6, delete))
+
+
+        addActions(labelMenu, (edit7, delete))
+
+
+        addActions(labelMenu, (edit8, delete))
+
+
+        addActions(labelMenu, (edit9, delete))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         self.labelList.setContextMenuPolicy(Qt.CustomContextMenu)
         self.labelList.customContextMenuRequested.connect(
             self.popLabelListMenu)
@@ -324,9 +485,19 @@ class MainWindow(QMainWindow, WindowMixin):
         self.drawSquaresOption.setChecked(settings.get(SETTING_DRAW_SQUARE, False))
         self.drawSquaresOption.triggered.connect(self.toogleDrawSquare)
 
+
+
+
+
+
+
+
         # Store actions for further handling.
         self.actions = struct(save=save, save_format=save_format, saveAs=saveAs, open=open, close=close, resetAll = resetAll,
-                              lineColor=color1, create=create, delete=delete, edit=edit, copy=copy,
+                              lineColor=color1, create=create, delete=delete, edit=edit, edit1=edit1, edit2=edit2, edit3=edit3, edit4=edit4, edit5=edit5, edit6=edit6, edit7=edit7, edit8=edit8, edit9=edit9, copy=copy,
+
+
+
                               createMode=createMode, editMode=editMode, advancedMode=advancedMode,
                               shapeLineColor=shapeLineColor, shapeFillColor=shapeFillColor,
                               zoom=zoom, zoomIn=zoomIn, zoomOut=zoomOut, zoomOrg=zoomOrg,
@@ -335,11 +506,20 @@ class MainWindow(QMainWindow, WindowMixin):
                               fileMenuActions=(
                                   open, opendir, save, saveAs, close, resetAll, quit),
                               beginner=(), advanced=(),
-                              editMenu=(edit, copy, delete,
+
+
+
+
+
+                              editMenu=(edit, edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, copy, delete,
                                         None, color1, self.drawSquaresOption),
-                              beginnerContext=(create, edit, copy, delete),
-                              advancedContext=(createMode, editMode, edit, copy,
+                              beginnerContext=(create, edit, edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, copy, delete),
+                              advancedContext=(createMode, editMode, edit, edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, copy,
                                                delete, shapeLineColor, shapeFillColor),
+
+
+
+
                               onLoadActive=(
                                   close, create, createMode, editMode),
                               onShapesPresent=(saveAs, hideAll, showAll))
@@ -347,6 +527,9 @@ class MainWindow(QMainWindow, WindowMixin):
         self.menus = struct(
             file=self.menu('&File'),
             edit=self.menu('&Edit'),
+
+
+
             view=self.menu('&View'),
             help=self.menu('&Help'),
             recentFiles=QMenu('Open &Recent'),
@@ -580,6 +763,8 @@ class MainWindow(QMainWindow, WindowMixin):
         items = self.labelList.selectedItems()
         if items:
             return items[0]
+
+
         return None
 
     def addRecentFile(self, filePath):
@@ -668,10 +853,204 @@ class MainWindow(QMainWindow, WindowMixin):
         if not item:
             return
         text = self.labelDialog.popUp(item.text())
+
+        #text = '1'
         if text is not None:
             item.setText(text)
             item.setBackground(generateColorByText(text))
             self.setDirty()
+
+
+
+
+
+
+
+    def editLabel1(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 1:
+            text = self.labelHist[0]
+
+
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+    def editLabel2(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 2:
+            text = self.labelHist[1]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+
+
+    def editLabel3(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 3:
+            text = self.labelHist[2]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+    def editLabel4(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+        if len(self.labelHist) >= 4:
+            text = self.labelHist[3]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+    def editLabel5(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 5:
+            text = self.labelHist[4]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+
+
+
+
+    def editLabel6(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 6:
+            text = self.labelHist[5]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+    def editLabel7(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 7:
+            text = self.labelHist[6]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+
+    def editLabel8(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+
+        if len(self.labelHist) >= 8:
+            text = self.labelHist[7]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
+
+
+
+
+    def editLabel9(self):
+        if not self.canvas.editing():
+            return
+        item = self.currentItem()
+        if not item:
+            return
+        if len(self.labelHist) >= 9:
+            text = self.labelHist[8]
+
+        #text = '1'
+        if text is not None:
+            item.setText(text)
+            item.setBackground(generateColorByText(text))
+            self.setDirty()
+
+
+
 
     # Tzutalin 20160906 : Add file list and dock to move faster
     def fileitemDoubleClicked(self, item=None):
@@ -720,7 +1099,34 @@ class MainWindow(QMainWindow, WindowMixin):
                 self.labelList.clearSelection()
         self.actions.delete.setEnabled(selected)
         self.actions.copy.setEnabled(selected)
+
+
+
+
         self.actions.edit.setEnabled(selected)
+
+        self.actions.edit1.setEnabled(selected)
+
+        self.actions.edit2.setEnabled(selected)
+
+        self.actions.edit3.setEnabled(selected)
+
+        self.actions.edit4.setEnabled(selected)
+
+        self.actions.edit5.setEnabled(selected)
+
+        self.actions.edit6.setEnabled(selected)
+
+        self.actions.edit7.setEnabled(selected)
+
+        self.actions.edit8.setEnabled(selected)
+
+        self.actions.edit9.setEnabled(selected)
+
+
+
+
+
         self.actions.shapeLineColor.setEnabled(selected)
         self.actions.shapeFillColor.setEnabled(selected)
 
