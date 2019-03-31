@@ -1,4 +1,12 @@
 LabelImg
+
+To facilitate data annotation, I added several shortcuts to the original author's code. One to nine correspond to the first nine categories. After clicking on the selected box, pressing one of the keys will automatically annotate the corresponding categories.
+
+And, here is the original author's explanation.
+
+
+
+
 ========
 
 .. image:: https://img.shields.io/pypi/v/labelimg.svg
